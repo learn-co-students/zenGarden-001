@@ -11,6 +11,10 @@
 		40FA3165C5284AD7BAB6CD65 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FD04907EBEA54295AECEC8A9 /* Images.xcassets */; };
 		51850E5214B3489FA4A199E5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2967C44308A445FB9FBB188 /* Foundation.framework */; };
 		8F6EA8AB3C2269B0A60B5D16 /* libPods-unit_tests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CA9F1FC2B2A414731A305C8 /* libPods-unit_tests.a */; };
+		D870D8071A02A13800D571DA /* rock1.png in Resources */ = {isa = PBXBuildFile; fileRef = D870D8061A02A13800D571DA /* rock1.png */; };
+		D870D80B1A02A35A00D571DA /* shrub.png in Resources */ = {isa = PBXBuildFile; fileRef = D870D8081A02A35900D571DA /* shrub.png */; };
+		D870D80C1A02A35A00D571DA /* swordinrock.png in Resources */ = {isa = PBXBuildFile; fileRef = D870D8091A02A35A00D571DA /* swordinrock.png */; };
+		D870D80D1A02A35A00D571DA /* rake.png in Resources */ = {isa = PBXBuildFile; fileRef = D870D80A1A02A35A00D571DA /* rake.png */; };
 		F3C1E78B367F490F85E73E3D /* FISAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CC1E2B91E2814818A6BFEB9A /* FISAppDelegate.m */; };
 /* End PBXBuildFile section */
 
@@ -33,6 +37,10 @@
 		B2967C44308A445FB9FBB188 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		B43519F1BA6D4B7090679A66 /* zenGarden-Prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "zenGarden-Prefix.pch"; sourceTree = "<group>"; };
 		CC1E2B91E2814818A6BFEB9A /* FISAppDelegate.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = FISAppDelegate.m; sourceTree = "<group>"; };
+		D870D8061A02A13800D571DA /* rock1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rock1.png; sourceTree = "<group>"; };
+		D870D8081A02A35900D571DA /* shrub.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shrub.png; sourceTree = "<group>"; };
+		D870D8091A02A35A00D571DA /* swordinrock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = swordinrock.png; sourceTree = "<group>"; };
+		D870D80A1A02A35A00D571DA /* rake.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rake.png; sourceTree = "<group>"; };
 		E75845D4FA47490BA86DCFC5 /* FISAppDelegate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = FISAppDelegate.h; sourceTree = "<group>"; };
 		EC64FB5DBABD49B5B4F53523 /* UnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UnitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3F1DCF5E90643CB801D9EBD /* UnitTests-Prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "UnitTests-Prefix.pch"; sourceTree = "<group>"; };
@@ -158,6 +166,10 @@
 		FE18899F6B1F408590194E69 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				D870D8081A02A35900D571DA /* shrub.png */,
+				D870D8091A02A35A00D571DA /* swordinrock.png */,
+				D870D80A1A02A35A00D571DA /* rake.png */,
+				D870D8061A02A13800D571DA /* rock1.png */,
 				FD04907EBEA54295AECEC8A9 /* Images.xcassets */,
 				6774A2BB08F8435288868017 /* Other-Sources */,
 			);
@@ -245,7 +257,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D870D8071A02A13800D571DA /* rock1.png in Resources */,
+				D870D80D1A02A35A00D571DA /* rake.png in Resources */,
+				D870D80B1A02A35A00D571DA /* shrub.png in Resources */,
 				40FA3165C5284AD7BAB6CD65 /* Images.xcassets in Resources */,
+				D870D80C1A02A35A00D571DA /* swordinrock.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
