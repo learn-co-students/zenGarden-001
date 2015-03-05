@@ -20,3 +20,8 @@ Let's make a zen garden app!
 ## Advanced
 
   1. Add in a different way to move the items. Double tap on one to "select" it and give it a background color. Then tap somewhere else to move that item to the new location.
+  2. 
+  
+## Hints
+
+  * Check out [this StackOverflow](http://stackoverflow.com/questions/19530283/how-do-i-detect-how-close-uiview-view-is-to-the-other-uiview) article on finding distance between two views
