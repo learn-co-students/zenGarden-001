@@ -25,3 +25,4 @@ Let's make a zen garden app!
 ## Hints
 
   * Check out [this StackOverflow](http://stackoverflow.com/questions/19530283/how-do-i-detect-how-close-uiview-view-is-to-the-other-uiview) article on finding distance between two views
+  * Gesture Recognizers are one to one, meaning that Gesture Recognizers can only be associated with one view at a time.
