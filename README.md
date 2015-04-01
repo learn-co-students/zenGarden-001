@@ -10,7 +10,7 @@ Let's make a zen garden app!
 ## Instructions
 
   1. I've included a few items to add to your zen garden. Make sure you have at least one of each.
-  2. You should be able to drag any of the `UIImageView` objects on the screen.
+  2. You should be able to drag any of the `UIImageView` objects on the screen. Make sure to set `userInteractionEnabled` to `YES` in code for each `UIImageView` object.
   3. Games without a way to win suck...let's have a secret "solution" to the perfect zen garden. Humans aren't perfect, feel free to put in some "tolerances" to these requirements.
     * Excalibur's sword should be in the top left or bottom left.
     * The Shrub and the rake should be near each other (choose what your definition of *near* is)
