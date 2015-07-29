@@ -1,7 +1,4 @@
----
-tags: UIGestureRecognizer, touch, uiview
-languages: objc
----
+
 
 # zenGarden
 
