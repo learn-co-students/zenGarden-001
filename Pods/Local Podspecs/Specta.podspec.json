@@ -1,6 +1,6 @@
 {
   "name": "Specta",
-  "version": "1.0.2",
+  "version": "1.0.4",
   "license": "MIT",
   "summary": "A light-weight TDD / BDD framework.",
   "homepage": "http://github.com/specta/specta",
@@ -9,7 +9,7 @@
   },
   "source": {
     "git": "https://github.com/specta/specta.git",
-    "tag": "v1.0.2"
+    "tag": "v1.0.4"
   },
   "description": "Specta is a light-weight testing framework that adds RSpec-like DSL to XCTest.",
   "source_files": "Specta/Specta/**/*.{h,m}",
@@ -18,14 +18,8 @@
     "XCTest"
   ],
   "requires_arc": true,
-  "osx": {
-    "xcconfig": {
-      "FRAMEWORK_SEARCH_PATHS": "$(inherited) $(DEVELOPER_FRAMEWORKS_DIR) \"$(PLATFORM_DIR)/Developer/Library/Frameworks\" \"$(DEVELOPER_DIR)/Platforms/MacOSX.platform/Developer/Library/Frameworks\""
-    }
-  },
-  "ios": {
-    "xcconfig": {
-      "FRAMEWORK_SEARCH_PATHS": "$(inherited) $(DEVELOPER_FRAMEWORKS_DIR) \"$(PLATFORM_DIR)/Developer/Library/Frameworks\" \"$(DEVELOPER_DIR)/Platforms/iPhoneSimulator.platform/Developer/Library/Frameworks\""
-    }
+  "platforms": {
+    "ios": "6.0",
+    "osx": "10.8"
   }
 }
