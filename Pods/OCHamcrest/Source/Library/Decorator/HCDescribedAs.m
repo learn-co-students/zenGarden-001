@@ -1,11 +1,5 @@
-//
-//  OCHamcrest - HCDescribedAs.m
-//  Copyright 2014 hamcrest.org. See LICENSE.txt
-//
-//  Created by: Jon Reid, http://qualitycoding.org/
-//  Docs: http://hamcrest.github.com/OCHamcrest/
-//  Source: https://github.com/hamcrest/OCHamcrest
-//
+//  OCHamcrest by Jon Reid, http://qualitycoding.org/about/
+//  Copyright 2015 hamcrest.org. See LICENSE.txt
 
 #import "HCDescribedAs.h"
 
@@ -21,7 +15,7 @@
     int decimal = 0;
     BOOL readDigit = NO;
 
-    NSUInteger length = [self length];
+    NSUInteger length = self.length;
     NSUInteger index;
     for (index = 0; index < length; ++index)
     {
@@ -32,25 +26,22 @@
         readDigit = YES;
     }
 
-    if (readDigit)
-    {
-        *number = decimal;
-        return [self substringFromIndex:index];
-    }
-    else
+    if (!readDigit)
     {
         *number = -1;
         return self;
     }
+    *number = decimal;
+    return [self substringFromIndex:index];
 }
 
 @end
 
 
 @interface HCDescribedAs ()
-@property (nonatomic, readonly) NSString *descriptionTemplate;
-@property (nonatomic, readonly) id <HCMatcher> matcher;
-@property (nonatomic, readonly) NSArray *values;
+@property (nonatomic, copy, readonly) NSString *descriptionTemplate;
+@property (nonatomic, strong, readonly) id <HCMatcher> matcher;
+@property (nonatomic, copy, readonly) NSArray *values;
 @end
 
 
@@ -84,12 +75,12 @@
     return [self.matcher matches:item];
 }
 
-- (void)describeMismatchOf:(id)item to:(id<HCDescription>)mismatchDescription
+- (void)describeMismatchOf:(id)item to:(id <HCDescription>)mismatchDescription
 {
     [self.matcher describeMismatchOf:item to:mismatchDescription];
 }
 
-- (void)describeTo:(id<HCDescription>)description
+- (void)describeTo:(id <HCDescription>)description
 {
     NSArray *components = [self.descriptionTemplate componentsSeparatedByString:@"%"];
     BOOL firstComponent = YES;
@@ -123,7 +114,7 @@
 id HC_describedAs(NSString *description, id <HCMatcher> matcher, ...)
 {
     NSMutableArray *valueList = [NSMutableArray array];
-    
+
     va_list args;
     va_start(args, matcher);
     id value = va_arg(args, id);
@@ -133,6 +124,6 @@ id HC_describedAs(NSString *description, id <HCMatcher> matcher, ...)
         value = va_arg(args, id);
     }
     va_end(args);
-    
+
     return [HCDescribedAs describedAs:description forMatcher:matcher overValues:valueList];
 }

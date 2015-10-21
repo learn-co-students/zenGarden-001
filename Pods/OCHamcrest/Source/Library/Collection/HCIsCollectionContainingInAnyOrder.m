@@ -1,11 +1,5 @@
-//
-//  OCHamcrest - HCIsCollectionContainingInAnyOrder.m
-//  Copyright 2014 hamcrest.org. See LICENSE.txt
-//
-//  Created by: Jon Reid, http://qualitycoding.org/
-//  Docs: http://hamcrest.github.com/OCHamcrest/
-//  Source: https://github.com/hamcrest/OCHamcrest
-//
+//  OCHamcrest by Jon Reid, http://qualitycoding.org/about/
+//  Copyright 2015 hamcrest.org. See LICENSE.txt
 
 #import "HCIsCollectionContainingInAnyOrder.h"
 
@@ -13,14 +7,14 @@
 
 
 @interface HCMatchingInAnyOrder : NSObject
-@property (nonatomic, readonly) NSMutableArray *matchers;
-@property (nonatomic, readonly) id <HCDescription, NSObject> mismatchDescription;
+@property (nonatomic, copy, readonly) NSMutableArray *matchers;
+@property (nonatomic, strong, readonly) id <HCDescription> mismatchDescription;
 @end
 
 @implementation HCMatchingInAnyOrder
 
 - (instancetype)initWithMatchers:(NSArray *)itemMatchers
-             mismatchDescription:(id<HCDescription, NSObject>)description
+             mismatchDescription:(id <HCDescription>)description
 {
     self = [super init];
     if (self)
@@ -50,9 +44,9 @@
 
 - (BOOL)isFinishedWith:(NSArray *)collection
 {
-    if ([self.matchers count] == 0)
+    if (self.matchers.count == 0)
         return YES;
-    
+
     [[[[self.mismatchDescription appendText:@"no item matches: "]
                                  appendList:self.matchers start:@"" separator:@", " end:@""]
                                  appendText:@" in "]
@@ -64,7 +58,7 @@
 
 
 @interface HCIsCollectionContainingInAnyOrder ()
-@property (nonatomic, readonly) NSArray *matchers;
+@property (nonatomic, copy, readonly) NSArray *matchers;
 @end
 
 @implementation HCIsCollectionContainingInAnyOrder
@@ -82,35 +76,25 @@
     return self;
 }
 
-- (BOOL)matches:(id)collection
-{
-    return [self matches:collection describingMismatchTo:nil];
-}
-
-- (BOOL)matches:(id)collection describingMismatchTo:(id<HCDescription>)mismatchDescription
+- (BOOL)matches:(id)collection describingMismatchTo:(id <HCDescription>)mismatchDescription
 {
     if (![collection conformsToProtocol:@protocol(NSFastEnumeration)])
     {
-        [super describeMismatchOf:collection to:mismatchDescription];
+        [[mismatchDescription appendText:@"was non-collection "] appendDescriptionOf:collection];
         return NO;
     }
-    
+
     HCMatchingInAnyOrder *matchSequence =
         [[HCMatchingInAnyOrder alloc] initWithMatchers:self.matchers
                                    mismatchDescription:mismatchDescription];
     for (id item in collection)
         if (![matchSequence matches:item])
             return NO;
-    
+
     return [matchSequence isFinishedWith:collection];
 }
 
-- (void)describeMismatchOf:(id)item to:(id<HCDescription>)mismatchDescription
-{
-    [self matches:item describingMismatchTo:mismatchDescription];
-}
-
-- (void)describeTo:(id<HCDescription>)description
+- (void)describeTo:(id <HCDescription>)description
 {
     [[[description appendText:@"a collection over "]
                    appendList:self.matchers start:@"[" separator:@", " end:@"]"]
@@ -120,11 +104,11 @@
 @end
 
 
-id HC_containsInAnyOrder(id itemMatch, ...)
+id HC_containsInAnyOrder(id itemMatchers, ...)
 {
     va_list args;
-    va_start(args, itemMatch);
-    NSArray *matchers = HCCollectMatchers(itemMatch, args);
+    va_start(args, itemMatchers);
+    NSArray *matchers = HCCollectMatchers(itemMatchers, args);
     va_end(args);
 
     return [HCIsCollectionContainingInAnyOrder isCollectionContainingInAnyOrder:matchers];

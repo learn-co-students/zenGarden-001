@@ -1,11 +1,5 @@
-//
-//  OCHamcrest - HCAnyOf.m
-//  Copyright 2014 hamcrest.org. See LICENSE.txt
-//
-//  Created by: Jon Reid, http://qualitycoding.org/
-//  Docs: http://hamcrest.github.com/OCHamcrest/
-//  Source: https://github.com/hamcrest/OCHamcrest
-//
+//  OCHamcrest by Jon Reid, http://qualitycoding.org/about/
+//  Copyright 2015 hamcrest.org. See LICENSE.txt
 
 #import "HCAnyOf.h"
 
@@ -13,7 +7,7 @@
 
 
 @interface HCAnyOf ()
-@property (nonatomic, readonly) NSArray *matchers;
+@property (nonatomic, copy, readonly) NSArray *matchers;
 @end
 
 @implementation HCAnyOf
@@ -39,7 +33,7 @@
     return NO;
 }
 
-- (void)describeTo:(id<HCDescription>)description
+- (void)describeTo:(id <HCDescription>)description
 {
     [description appendList:self.matchers start:@"(" separator:@" or " end:@")"];
 }
@@ -47,12 +41,12 @@
 @end
 
 
-id HC_anyOf(id match, ...)
+id HC_anyOf(id matchers, ...)
 {
     va_list args;
-    va_start(args, match);
-    NSArray *matcherList = HCCollectMatchers(match, args);
+    va_start(args, matchers);
+    NSArray *matcherList = HCCollectMatchers(matchers, args);
     va_end(args);
-    
+
     return [HCAnyOf anyOf:matcherList];
 }

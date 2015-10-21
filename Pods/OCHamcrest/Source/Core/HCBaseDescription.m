@@ -1,11 +1,5 @@
-//
-//  OCHamcrest - HCBaseDescription.m
-//  Copyright 2014 hamcrest.org. See LICENSE.txt
-//
-//  Created by: Jon Reid, http://qualitycoding.org/
-//  Docs: http://hamcrest.github.com/OCHamcrest/
-//  Source: https://github.com/hamcrest/OCHamcrest
-//
+//  OCHamcrest by Jon Reid, http://qualitycoding.org/about/
+//  Copyright 2015 hamcrest.org. See LICENSE.txt
 
 #import "HCBaseDescription.h"
 
@@ -14,30 +8,30 @@
 
 @implementation HCBaseDescription
 
-- (id<HCDescription>)appendText:(NSString *)text
+- (id <HCDescription>)appendText:(NSString *)text
 {
     [self append:text];
     return self;
 }
 
-- (id<HCDescription>)appendDescriptionOf:(id)value
+- (id <HCDescription>)appendDescriptionOf:(id)value
 {
     if (value == nil)
         [self append:@"nil"];
     else if ([value conformsToProtocol:@protocol(HCSelfDescribing)])
         [value describeTo:self];
-    else if ([value isKindOfClass:[NSString class]])
+    else if ([value respondsToSelector:@selector(isKindOfClass:)] && [value isKindOfClass:[NSString class]])
         [self toCSyntaxString:value];
     else
         [self appendObjectDescriptionOf:value];
-    
+
     return self;
 }
 
-- (id<HCDescription>)appendObjectDescriptionOf:(id)value
+- (id <HCDescription>)appendObjectDescriptionOf:(id)value
 {
     NSString *description = [value description];
-    NSUInteger descriptionLength = [description length];
+    NSUInteger descriptionLength = description.length;
     if (descriptionLength == 0)
         [self append:[NSString stringWithFormat:@"<%@: %p>", NSStringFromClass([value class]), (__bridge void *)value]];
     else if ([description characterAtIndex:0] == '<'
@@ -54,13 +48,13 @@
     return self;
 }
 
-- (id<HCDescription>)appendList:(NSArray *)values
+- (id <HCDescription>)appendList:(NSArray *)values
                           start:(NSString *)start
                       separator:(NSString *)separator
                             end:(NSString *)end
 {
     BOOL separate = NO;
-    
+
     [self append:start];
     for (id item in values)
     {
@@ -76,7 +70,7 @@
 - (void)toCSyntaxString:(NSString *)unformatted
 {
     [self append:@"\""];
-    NSUInteger length = [unformatted length];
+    NSUInteger length = unformatted.length;
     for (NSUInteger index = 0; index < length; ++index)
         [self toCSyntax:[unformatted characterAtIndex:index]];
     [self append:@"\""];

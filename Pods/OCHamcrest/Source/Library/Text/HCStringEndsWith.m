@@ -1,27 +1,21 @@
-//
-//  OCHamcrest - HCStringEndsWith.m
-//  Copyright 2014 hamcrest.org. See LICENSE.txt
-//
-//  Created by: Jon Reid, http://qualitycoding.org/
-//  Docs: http://hamcrest.github.com/OCHamcrest/
-//  Source: https://github.com/hamcrest/OCHamcrest
-//
+//  OCHamcrest by Jon Reid, http://qualitycoding.org/about/
+//  Copyright 2015 hamcrest.org. See LICENSE.txt
 
 #import "HCStringEndsWith.h"
 
 
 @implementation HCStringEndsWith
 
-+ (instancetype)stringEndsWith:(NSString *)aString
++ (instancetype)stringEndsWith:(NSString *)substring
 {
-    return [[self alloc] initWithSubstring:aString];
+    return [[self alloc] initWithSubstring:substring];
 }
 
 - (BOOL)matches:(id)item
 {
     if (![item respondsToSelector:@selector(hasSuffix:)])
         return NO;
-    
+
     return [item hasSuffix:self.substring];
 }
 
@@ -33,7 +27,7 @@
 @end
 
 
-id HC_endsWith(NSString *aString)
+id HC_endsWith(NSString *suffix)
 {
-    return [HCStringEndsWith stringEndsWith:aString];
+    return [HCStringEndsWith stringEndsWith:suffix];
 }

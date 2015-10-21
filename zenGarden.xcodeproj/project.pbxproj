@@ -10,6 +10,7 @@
 		38F99569C9BA4C4786763AA2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FCC98207D76C457E9246A8FB /* main.m */; };
 		40FA3165C5284AD7BAB6CD65 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FD04907EBEA54295AECEC8A9 /* Images.xcassets */; };
 		51850E5214B3489FA4A199E5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2967C44308A445FB9FBB188 /* Foundation.framework */; };
+		5BBECA371BD7E1F600FFFAE2 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5BBECA361BD7E1F600FFFAE2 /* Launch Screen.storyboard */; settings = {ASSET_TAGS = (); }; };
 		8F6EA8AB3C2269B0A60B5D16 /* libPods-unit_tests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CA9F1FC2B2A414731A305C8 /* libPods-unit_tests.a */; };
 		D870D8071A02A13800D571DA /* rock1.png in Resources */ = {isa = PBXBuildFile; fileRef = D870D8061A02A13800D571DA /* rock1.png */; };
 		D870D80B1A02A35A00D571DA /* shrub.png in Resources */ = {isa = PBXBuildFile; fileRef = D870D8081A02A35900D571DA /* shrub.png */; };
@@ -31,6 +32,7 @@
 /* Begin PBXFileReference section */
 		2CA9F1FC2B2A414731A305C8 /* libPods-unit_tests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-unit_tests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DE599179070A4B7ED9C2546 /* Pods-unit_tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-unit_tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-unit_tests/Pods-unit_tests.release.xcconfig"; sourceTree = "<group>"; };
+		5BBECA361BD7E1F600FFFAE2 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = "Launch Screen.storyboard"; path = "../../Launch Screen.storyboard"; sourceTree = "<group>"; };
 		67D851389F524865BC974049 /* zenGarden.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = zenGarden.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8EEA799D64244FD1BB24E1BD /* UnitTests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "UnitTests-Info.plist"; sourceTree = "<group>"; };
 		A4278CED900D661A7912A60C /* Pods-unit_tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-unit_tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-unit_tests/Pods-unit_tests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -166,6 +168,7 @@
 		FE18899F6B1F408590194E69 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				5BBECA361BD7E1F600FFFAE2 /* Launch Screen.storyboard */,
 				D870D8081A02A35900D571DA /* shrub.png */,
 				D870D8091A02A35A00D571DA /* swordinrock.png */,
 				D870D80A1A02A35A00D571DA /* rake.png */,
@@ -206,6 +209,7 @@
 				92B5F1809BCE4582AD6C660C /* Frameworks */,
 				B595D58445EF4EFB9864C752 /* Resources */,
 				26F075015ABDED17AD95582B /* Copy Pods Resources */,
+				B72651F5B758325235614546 /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -257,6 +261,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5BBECA371BD7E1F600FFFAE2 /* Launch Screen.storyboard in Resources */,
 				D870D8071A02A13800D571DA /* rock1.png in Resources */,
 				D870D80D1A02A35A00D571DA /* rake.png in Resources */,
 				D870D80B1A02A35A00D571DA /* shrub.png in Resources */,
@@ -296,6 +301,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		B72651F5B758325235614546 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-unit_tests/Pods-unit_tests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		FF34FB11CF804AC980919A03 /* Warn for TODO and FIXME comments */ = {
@@ -354,6 +374,7 @@
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "zenGarden/Resources/Other-Sources/zenGarden-Info.plist";
 				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				OTHER_CFLAGS = (
 					"-DNS_BLOCK_ASSERTIONS=1",
 					"$(inherited)",
@@ -409,7 +430,7 @@
 				GCC_WARN_UNUSED_LABEL = YES;
 				GCC_WARN_UNUSED_VALUE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -434,6 +455,7 @@
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "zenGarden/Resources/Other-Sources/zenGarden-Info.plist";
 				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PUBLIC_HEADERS_FOLDER_PATH = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
@@ -506,7 +528,7 @@
 				GCC_WARN_UNUSED_LABEL = YES;
 				GCC_WARN_UNUSED_VALUE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 			};

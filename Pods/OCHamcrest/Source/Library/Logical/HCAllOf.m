@@ -1,11 +1,5 @@
-//
-//  OCHamcrest - HCAllOf.m
-//  Copyright 2014 hamcrest.org. See LICENSE.txt
-//
-//  Created by: Jon Reid, http://qualitycoding.org/
-//  Docs: http://hamcrest.github.com/OCHamcrest/
-//  Source: https://github.com/hamcrest/OCHamcrest
-//
+//  OCHamcrest by Jon Reid, http://qualitycoding.org/about/
+//  Copyright 2015 hamcrest.org. See LICENSE.txt
 
 #import "HCAllOf.h"
 
@@ -13,7 +7,7 @@
 
 
 @interface HCAllOf ()
-@property (nonatomic, readonly) NSArray *matchers;
+@property (nonatomic, copy, readonly) NSArray *matchers;
 @end
 
 @implementation HCAllOf
@@ -31,12 +25,7 @@
     return self;
 }
 
-- (BOOL)matches:(id)item
-{
-    return [self matches:item describingMismatchTo:nil];
-}
-
-- (BOOL)matches:(id)item describingMismatchTo:(id<HCDescription>)mismatchDescription
+- (BOOL)matches:(id)item describingMismatchTo:(id <HCDescription>)mismatchDescription
 {
     for (id <HCMatcher> oneMatcher in self.matchers)
     {
@@ -50,12 +39,7 @@
     return YES;
 }
 
-- (void)describeMismatchOf:(id)item to:(id<HCDescription>)mismatchDescription
-{
-    [self matches:item describingMismatchTo:mismatchDescription];
-}
-
-- (void)describeTo:(id<HCDescription>)description
+- (void)describeTo:(id <HCDescription>)description
 {
     [description appendList:self.matchers start:@"(" separator:@" and " end:@")"];
 }
@@ -63,12 +47,12 @@
 @end
 
 
-id HC_allOf(id match, ...)
+id HC_allOf(id matchers, ...)
 {
     va_list args;
-    va_start(args, match);
-    NSArray *matcherList = HCCollectMatchers(match, args);
+    va_start(args, matchers);
+    NSArray *matcherList = HCCollectMatchers(matchers, args);
     va_end(args);
-    
+
     return [HCAllOf allOf:matcherList];
 }

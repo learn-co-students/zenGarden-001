@@ -1,8 +1,6 @@
-//
-//  OCHamcrest - HCConformsToProtocol.m
-//  Copyright 2014 hamcrest.org. See LICENSE.txt
-//
-//  Created by: Todd Farrell
+//  OCHamcrest by Jon Reid, http://qualitycoding.org/about/
+//  Copyright 2015 hamcrest.org. See LICENSE.txt
+//  Contribution by Todd Farrell
 //
 
 #import "HCConformsToProtocol.h"
@@ -11,7 +9,7 @@
 
 
 @interface HCConformsToProtocol ()
-@property (nonatomic, readonly) Protocol *protocol;
+@property (nonatomic, strong, readonly) Protocol *protocol;
 @end
 
 @implementation HCConformsToProtocol
@@ -24,7 +22,7 @@
 - (instancetype)initWithProtocol:(Protocol *)protocol
 {
     HCRequireNonNilObject(protocol);
-    
+
     self = [super init];
     if (self)
         _protocol = protocol;
@@ -36,7 +34,7 @@
     return [item conformsToProtocol:self.protocol];
 }
 
-- (void)describeTo:(id<HCDescription>)description
+- (void)describeTo:(id <HCDescription>)description
 {
     [[description appendText:@"an object that conforms to "]
                   appendText:NSStringFromProtocol(self.protocol)];

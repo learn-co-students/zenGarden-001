@@ -1,20 +1,11 @@
-//
-//  OCHamcrest - HCTestFailureHandlerChain.h
-//  Copyright 2014 hamcrest.org. See LICENSE.txt
-//
-//  Created by: Jon Reid, http://qualitycoding.org/
-//  Docs: http://hamcrest.github.com/OCHamcrest/
-//  Source: https://github.com/hamcrest/OCHamcrest
-//
+//  OCHamcrest by Jon Reid, http://qualitycoding.org/about/
+//  Copyright 2015 hamcrest.org. See LICENSE.txt
 
-#import <Foundation/Foundation.h>
+#import <OCHamcrest/HCTestFailureHandler.h>
 
-@class HCTestFailureHandler;
-
-
-/**
- Returns chain of test failure handlers.
- 
- @ingroup integration
+/*!
+ * @abstract Returns chain of test failure handlers.
+ * @deprecated Version 4.2.0. Use <code>[HCTestFailureReporterChain chain]</code> instead.
+ * @see HCTestFailureReporterChain
  */
-FOUNDATION_EXPORT HCTestFailureHandler *HC_testFailureHandlerChain(void);
+FOUNDATION_EXPORT HCTestFailureHandler *HC_testFailureHandlerChain(void) __attribute__((deprecated));

@@ -1,11 +1,5 @@
-//
-//  OCHamcrest - HCHasCount.m
-//  Copyright 2014 hamcrest.org. See LICENSE.txt
-//
-//  Created by: Jon Reid, http://qualitycoding.org/
-//  Docs: http://hamcrest.github.com/OCHamcrest/
-//  Source: https://github.com/hamcrest/OCHamcrest
-//
+//  OCHamcrest by Jon Reid, http://qualitycoding.org/about/
+//  Copyright 2015 hamcrest.org. See LICENSE.txt
 
 #import "HCHasCount.h"
 
@@ -13,21 +7,21 @@
 
 
 @interface HCHasCount ()
-@property (nonatomic, readonly) id <HCMatcher> countMatcher;
+@property (nonatomic, strong, readonly) id <HCMatcher> countMatcher;
 @end
 
 @implementation HCHasCount
 
-+ (instancetype)hasCount:(id <HCMatcher>)matcher
++ (instancetype)hasCount:(id <HCMatcher>)countMatcher
 {
-    return [[self alloc] initWithCount:matcher];
+    return [[self alloc] initWithCount:countMatcher];
 }
 
-- (instancetype)initWithCount:(id <HCMatcher>)matcher
+- (instancetype)initWithCount:(id <HCMatcher>)countMatcher
 {
     self = [super init];
     if (self)
-        _countMatcher = matcher;
+        _countMatcher = countMatcher;
     return self;
 }
 
@@ -35,7 +29,7 @@
 {
     if (![self itemHasCount:item])
         return NO;
-    
+
     NSNumber *count = @([item count]);
     return [self.countMatcher matches:count];
 }
@@ -45,7 +39,7 @@
     return [item respondsToSelector:@selector(count)];
 }
 
-- (void)describeMismatchOf:(id)item to:(id<HCDescription>)mismatchDescription
+- (void)describeMismatchOf:(id)item to:(id <HCDescription>)mismatchDescription
 {
     [mismatchDescription appendText:@"was "];
     if ([self itemHasCount:item])
@@ -57,7 +51,7 @@
     [mismatchDescription appendDescriptionOf:item];
 }
 
-- (void)describeTo:(id<HCDescription>)description
+- (void)describeTo:(id <HCDescription>)description
 {
     [[description appendText:@"a collection with count of "] appendDescriptionOf:self.countMatcher];
 }
@@ -65,9 +59,9 @@
 @end
 
 
-id HC_hasCount(id <HCMatcher> matcher)
+id HC_hasCount(id <HCMatcher> countMatcher)
 {
-    return [HCHasCount hasCount:matcher];
+    return [HCHasCount hasCount:countMatcher];
 }
 
 id HC_hasCountOf(NSUInteger value)

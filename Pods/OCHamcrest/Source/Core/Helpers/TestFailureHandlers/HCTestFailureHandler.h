@@ -1,29 +1,11 @@
-//
-//  OCHamcrest - HCTestFailureHandler.h
-//  Copyright 2014 hamcrest.org. See LICENSE.txt
-//
-//  Created by: Jon Reid, http://qualitycoding.org/
-//  Docs: http://hamcrest.github.com/OCHamcrest/
-//  Source: https://github.com/hamcrest/OCHamcrest
-//
+//  OCHamcrest by Jon Reid, http://qualitycoding.org/about/
+//  Copyright 2015 hamcrest.org. See LICENSE.txt
 
-#import <Foundation/Foundation.h>
+#import <OCHamcrest/HCTestFailureReporter.h>
 
-@class HCTestFailure;
-
-
-/**
- Chain-of-responsibility for handling test failures.
- 
- @ingroup integration
+/*!
+ * @class HCTestFailureHandler
+ * @abstract Chain-of-responsibility for handling test failures.
+ * @deprecated Version 4.2.0. Use @ref HCTestFailureReporter instead.
  */
-@interface HCTestFailureHandler : NSObject
-
-- (instancetype)initWithSuccessor:(HCTestFailureHandler *)successor;
-
-/**
- Handle test failure at specific location, or pass to successor.
- */
-- (void)handleFailure:(HCTestFailure *)failure;
-
-@end
+@compatibility_alias HCTestFailureHandler HCTestFailureReporter;

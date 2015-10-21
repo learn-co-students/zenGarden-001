@@ -1,11 +1,5 @@
-//
-//  OCHamcrest - HCStringDescription.m
-//  Copyright 2014 hamcrest.org. See LICENSE.txt
-//
-//  Created by: Jon Reid, http://qualitycoding.org/
-//  Docs: http://hamcrest.github.com/OCHamcrest/
-//  Source: https://github.com/hamcrest/OCHamcrest
-//
+//  OCHamcrest by Jon Reid, http://qualitycoding.org/about/
+//  Copyright 2015 hamcrest.org. See LICENSE.txt
 
 #import "HCStringDescription.h"
 
@@ -14,11 +8,11 @@
 
 @implementation HCStringDescription
 
-+ (NSString *)stringFrom:(id<HCSelfDescribing>)selfDescribing
++ (NSString *)stringFrom:(id <HCSelfDescribing>)selfDescribing
 {
     HCStringDescription *description = [HCStringDescription stringDescription];
     [description appendDescriptionOf:selfDescribing];
-    return [description description];
+    return description.description;
 }
 
 + (instancetype)stringDescription

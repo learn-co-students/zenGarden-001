@@ -1,27 +1,21 @@
-//
-//  OCHamcrest - HCStringStartsWith.m
-//  Copyright 2014 hamcrest.org. See LICENSE.txt
-//
-//  Created by: Jon Reid, http://qualitycoding.org/
-//  Docs: http://hamcrest.github.com/OCHamcrest/
-//  Source: https://github.com/hamcrest/OCHamcrest
-//
+//  OCHamcrest by Jon Reid, http://qualitycoding.org/about/
+//  Copyright 2015 hamcrest.org. See LICENSE.txt
 
 #import "HCStringStartsWith.h"
 
 
 @implementation HCStringStartsWith
 
-+ (instancetype)stringStartsWith:(NSString *)aSubstring
++ (instancetype)stringStartsWith:(NSString *)substring
 {
-    return [[self alloc] initWithSubstring:aSubstring];
+    return [[self alloc] initWithSubstring:substring];
 }
 
 - (BOOL)matches:(id)item
 {
     if (![item respondsToSelector:@selector(hasPrefix:)])
         return NO;
-    
+
     return [item hasPrefix:self.substring];
 }
 
@@ -33,7 +27,7 @@
 @end
 
 
-id HC_startsWith(NSString *aString)
+id HC_startsWith(NSString *prefix)
 {
-    return [HCStringStartsWith stringStartsWith:aString];
+    return [HCStringStartsWith stringStartsWith:prefix];
 }

@@ -1,11 +1,5 @@
-//
-//  OCHamcrest - HCReturnValueGetter.m
-//  Copyright 2014 hamcrest.org. See LICENSE.txt
-//
-//  Created by: Jon Reid, http://qualitycoding.org/
-//  Docs: http://hamcrest.github.com/OCHamcrest/
-//  Source: https://github.com/hamcrest/OCHamcrest
-//
+//  OCHamcrest by Jon Reid, http://qualitycoding.org/about/
+//  Copyright 2015 hamcrest.org. See LICENSE.txt
 
 #import "HCReturnValueGetter.h"
 
@@ -15,8 +9,8 @@
 @end
 
 @interface HCReturnValueGetter ()
-@property (nonatomic, readonly) char const *handlerType;
-@property (nonatomic, readonly) HCReturnValueGetter *successor;
+@property (nonatomic, assign, readonly) char const *handlerType;
+@property (nonatomic, strong, readonly) HCReturnValueGetter *successor;
 @end
 
 
@@ -42,8 +36,8 @@
 {
     if ([self handlesReturnType:type])
         return [self returnValueFromInvocation:invocation];
-    else
-        return [self.successor returnValueOfType:type fromInvocation:invocation];
+
+    return [self.successor returnValueOfType:type fromInvocation:invocation];
 }
 
 @end

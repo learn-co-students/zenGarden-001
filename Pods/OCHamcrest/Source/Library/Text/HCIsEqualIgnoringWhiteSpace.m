@@ -1,11 +1,5 @@
-//
-//  OCHamcrest - HCIsEqualIgnoringWhiteSpace.m
-//  Copyright 2014 hamcrest.org. See LICENSE.txt
-//
-//  Created by: Jon Reid, http://qualitycoding.org/
-//  Docs: http://hamcrest.github.com/OCHamcrest/
-//  Source: https://github.com/hamcrest/OCHamcrest
-//
+//  OCHamcrest by Jon Reid, http://qualitycoding.org/about/
+//  Copyright 2015 hamcrest.org. See LICENSE.txt
 
 #import "HCIsEqualIgnoringWhiteSpace.h"
 
@@ -14,7 +8,7 @@
 
 static void removeTrailingSpace(NSMutableString *string)
 {
-    NSUInteger length = [string length];
+    NSUInteger length = string.length;
     if (length > 0)
     {
         NSUInteger charIndex = length - 1;
@@ -25,9 +19,9 @@ static void removeTrailingSpace(NSMutableString *string)
 
 static NSMutableString *stripSpace(NSString *string)
 {
-    NSUInteger length = [string length];
+    NSUInteger length = string.length;
     NSMutableString *result = [NSMutableString stringWithCapacity:length];
-    bool lastWasSpace = true;
+    BOOL lastWasSpace = YES;
     for (NSUInteger charIndex = 0; charIndex < length; ++charIndex)
     {
         unichar character = [string characterAtIndex:charIndex];
@@ -35,23 +29,23 @@ static NSMutableString *stripSpace(NSString *string)
         {
             if (!lastWasSpace)
                 [result appendString:@" "];
-            lastWasSpace = true;
+            lastWasSpace = YES;
         }
         else
         {
             [result appendFormat:@"%C", character];
-            lastWasSpace = false;
+            lastWasSpace = NO;
         }
     }
-        
+
     removeTrailingSpace(result);
     return result;
 }
 
 
 @interface HCIsEqualIgnoringWhiteSpace ()
-@property (nonatomic, readonly) NSString *originalString;
-@property (nonatomic, readonly) NSString *strippedString;
+@property (nonatomic, copy, readonly) NSString *originalString;
+@property (nonatomic, copy, readonly) NSString *strippedString;
 @end
 
 @implementation HCIsEqualIgnoringWhiteSpace
@@ -64,12 +58,12 @@ static NSMutableString *stripSpace(NSString *string)
 - (instancetype)initWithString:(NSString *)string
 {
     HCRequireNonNilObject(string);
-    
+
     self = [super init];
     if (self)
     {
         _originalString = [string copy];
-        _strippedString = stripSpace(string);
+        _strippedString = [stripSpace(string) copy];
     }
     return self;
 }
@@ -78,11 +72,11 @@ static NSMutableString *stripSpace(NSString *string)
 {
     if (![item isKindOfClass:[NSString class]])
         return NO;
-    
+
     return [self.strippedString isEqualToString:stripSpace(item)];
 }
 
-- (void)describeTo:(id<HCDescription>)description
+- (void)describeTo:(id <HCDescription>)description
 {
     [[description appendDescriptionOf:self.originalString]
                   appendText:@" ignoring whitespace"];
@@ -91,7 +85,7 @@ static NSMutableString *stripSpace(NSString *string)
 @end
 
 
-id HC_equalToIgnoringWhiteSpace(NSString *aString)
+id HC_equalToIgnoringWhiteSpace(NSString *expectedString)
 {
-    return [HCIsEqualIgnoringWhiteSpace isEqualIgnoringWhiteSpace:aString];
+    return [HCIsEqualIgnoringWhiteSpace isEqualIgnoringWhiteSpace:expectedString];
 }

@@ -1,19 +1,13 @@
-//
-//  OCHamcrest - HCIsCloseTo.m
-//  Copyright 2014 hamcrest.org. See LICENSE.txt
-//
-//  Created by: Jon Reid, http://qualitycoding.org/
-//  Docs: http://hamcrest.github.com/OCHamcrest/
-//  Source: https://github.com/hamcrest/OCHamcrest
-//
+//  OCHamcrest by Jon Reid, http://qualitycoding.org/about/
+//  Copyright 2015 hamcrest.org. See LICENSE.txt
 
 #import "HCIsCloseTo.h"
 
 
 @interface HCIsCloseTo ()
 
-@property (nonatomic, readonly) double value;
-@property (nonatomic, readonly) double delta;
+@property (nonatomic, assign, readonly) double value;
+@property (nonatomic, assign, readonly) double delta;
 @end
 
 
@@ -39,8 +33,13 @@
 {
     if ([self itemIsNotNumber:item])
         return NO;
-    
-    return fabs([item doubleValue] - self.value) <= self.delta;
+
+    return [self actualDelta:item] <= self.delta;
+}
+
+- (double)actualDelta:(id)item
+{
+    return fabs([item doubleValue] - self.value);
 }
 
 - (BOOL)itemIsNotNumber:(id)item
@@ -48,20 +47,19 @@
     return ![item isKindOfClass:[NSNumber class]];
 }
 
-- (void)describeMismatchOf:(id)item to:(id<HCDescription>)mismatchDescription
+- (void)describeMismatchOf:(id)item to:(id <HCDescription>)mismatchDescription
 {
     if ([self itemIsNotNumber:item])
         [super describeMismatchOf:item to:mismatchDescription];
     else
     {
-        double actualDelta = fabs([item doubleValue] - self.value);
         [[[mismatchDescription appendDescriptionOf:item]
                                appendText:@" differed by "]
-                               appendDescriptionOf:@(actualDelta)];
+                               appendDescriptionOf:@([self actualDelta:item])];
     }
 }
 
-- (void)describeTo:(id<HCDescription>)description
+- (void)describeTo:(id <HCDescription>)description
 {
     [[[[description appendText:@"a numeric value within "]
                     appendDescriptionOf:@(self.delta)]

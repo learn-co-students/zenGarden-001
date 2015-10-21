@@ -1,20 +1,14 @@
-//
-//  OCHamcrest - HCIsInstanceOf.m
-//  Copyright 2014 hamcrest.org. See LICENSE.txt
-//
-//  Created by: Jon Reid, http://qualitycoding.org/
-//  Docs: http://hamcrest.github.com/OCHamcrest/
-//  Source: https://github.com/hamcrest/OCHamcrest
-//
+//  OCHamcrest by Jon Reid, http://qualitycoding.org/about/
+//  Copyright 2015 hamcrest.org. See LICENSE.txt
 
 #import "HCIsInstanceOf.h"
 
 
 @implementation HCIsInstanceOf
 
-+ (instancetype)isInstanceOf:(Class)type
++ (instancetype)isInstanceOf:(Class)expectedClass
 {
-    return [[self alloc] initWithType:type];
+    return [[self alloc] initWithClass:expectedClass];
 }
 
 - (BOOL)matches:(id)item
@@ -30,7 +24,7 @@
 @end
 
 
-id HC_instanceOf(Class aClass)
+id HC_instanceOf(Class expectedClass)
 {
-    return [HCIsInstanceOf isInstanceOf:aClass];
+    return [HCIsInstanceOf isInstanceOf:expectedClass];
 }

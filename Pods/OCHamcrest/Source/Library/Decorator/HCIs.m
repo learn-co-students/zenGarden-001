@@ -1,11 +1,5 @@
-//
-//  OCHamcrest - HCIs.m
-//  Copyright 2014 hamcrest.org. See LICENSE.txt
-//
-//  Created by: Jon Reid, http://qualitycoding.org/
-//  Docs: http://hamcrest.github.com/OCHamcrest/
-//  Source: https://github.com/hamcrest/OCHamcrest
-//
+//  OCHamcrest by Jon Reid, http://qualitycoding.org/about/
+//  Copyright 2015 hamcrest.org. See LICENSE.txt
 
 #import "HCIs.h"
 
@@ -13,7 +7,7 @@
 
 
 @interface HCIs ()
-@property (nonatomic, readonly) id <HCMatcher> matcher;
+@property (nonatomic, strong, readonly) id <HCMatcher> matcher;
 @end
 
 @implementation HCIs
@@ -36,12 +30,12 @@
     return [self.matcher matches:item];
 }
 
-- (void)describeMismatchOf:(id)item to:(id<HCDescription>)mismatchDescription
+- (void)describeMismatchOf:(id)item to:(id <HCDescription>)mismatchDescription
 {
     [self.matcher describeMismatchOf:item to:mismatchDescription];
 }
 
-- (void)describeTo:(id<HCDescription>)description
+- (void)describeTo:(id <HCDescription>)description
 {
     [description appendDescriptionOf:self.matcher];
 }
