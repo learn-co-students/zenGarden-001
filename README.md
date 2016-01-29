@@ -24,4 +24,4 @@ Let's make a zen garden app!
   * Check out [this StackOverflow](http://stackoverflow.com/questions/19530283/how-do-i-detect-how-close-uiview-view-is-to-the-other-uiview) article on finding distance between two views
   * Gesture Recognizers are one to one, meaning that Gesture Recognizers can only be associated with one view at a time.
 
-<a href='https://learn.co/lessons/zenGarden' data-visibility='hidden'>View this lesson on Learn.co</a>
+<p data-visibility='hidden'>View <a href='https://learn.co/lessons/zenGarden' title='zenGarden'>zenGarden</a> on Learn.co and start learning to code for free.</p>
