@@ -6,14 +6,15 @@ Let's make a zen garden app!
 
 ## Instructions
 
-  0. Set up a storyboard with a plain old View Controller to get started.
-  1. I've included a few items (images) to add to your zen garden. Make sure you have at least one of each.
-  2. You should be able to drag any of the `UIImageView` objects on the screen. Make sure to set `userInteractionEnabled` to `YES` in code for each `UIImageView` object.
-  3. Games without a way to win suck...let's have a secret "solution" to the perfect zen garden. Humans aren't perfect, feel free to put in some "tolerances" to these requirements.
-    * King Arthur's sword, Excalibur, should be in the top left or bottom left.
-    * The Shrub and the rake should be near each other (choose what your definition of *near* is)
-    * The regular stone needs to be on a different North/South half of the screen as King Arthur's Sword, Excalibur. So if the sword is on the top, the other stone should be on the bottom.
-  4. When all of these conditions are met, put up a `UIAlertView` saying you win, when the user selects "OK" randomly scramble the views.
+  0. Set up a storyboard with a plain old View Controller to get started. **How to make a new Storyboard file**: (File --> New --> User Interface (under the iOS section) --> Select the Storyboard template then hit **Next**. After creating your Storyboard, make sure to set your Main Interface to this new Storyboard file you created. You do this by selecting the zenGarden project file (near the top in the left pane), then under the General Tab you should see various options you can change like Deployment Target, Devices, and **Main Interface**. In the dropdown menu next to **Main Interface**, select the Storyboard file you just created.
+  1. Included with this project are four Images (shrub.png, swordinrock.png, rake.png & rock1.png) which you can find in the Resources folder in the left pane in xcode. 
+  2. Drag four(4) `UIImageView` objects onto your `UIViewController`. Set the **Image** of each `UIImageView` to equal one of the four png files mentioned above. **How to do this**: After selecting a `UIImageView`, in the right pane after selecting the **Attributes Inspector**, you should see underneath Image View that you can open up a drop down menu and select any of the four images. After you've selected an image for all four `UIImageView`'s - you should see those images in your `UIViewController`. 
+  3. You should be able to drag any of the `UIImageView` objects on the screen. Make sure to set `userInteractionEnabled` to `YES` in code for each `UIImageView` object. *This can also be done in InterfaceBuilder in the Attributes Inspector* **How to drag?**: *Hint*: `UIPanGestureRecognizer`. After creating a `UIPanGestureRecognizer` object in code, you need to add it to a view (in our case, we will need to add it to a `UIImageView` object.)
+  4. Games without a way to win suck...let's have a secret "solution" to the perfect zen garden. Humans aren't perfect, feel free to put in some "tolerances" to these requirements.
+    * King Arthur's sword (swordinrock.png), should be in the top left or bottom left.
+    * The Shrub (shrub.png) and the rake (rake.png) should be near each other (choose what your definition of *near* is)
+    * The regular stone (rock1.png) needs to be on a different North/South half of the screen as King Arthur's Sword (swordinrock.png). So if the sword is on the top, the other stone should be on the bottom.
+  5. When all of these conditions are met, put up a `UIAlertView` saying you win, when the user selects "OK" randomly scramble the views.
 
 ## Advanced
 
