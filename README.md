@@ -4,6 +4,8 @@
 
 Let's make a zen garden app! 
 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/YmUNNvzSRrU?rel=0&modestbranding=1" frameborder="0" allowfullscreen></iframe><p><a href="https://www.youtube.com/watch?v=YmUNNvzSRrU">ZenGarden Demo</a></p>
+
 ## Instructions
 
   0. Set up a storyboard with a plain old View Controller to get started. **How to make a new Storyboard file**: (File --> New --> User Interface (under the iOS section) --> Select the Storyboard template then hit **Next**. After creating your Storyboard, make sure to set your Main Interface to this new Storyboard file you created. You do this by selecting the zenGarden project file (near the top in the left pane), then under the General Tab you should see various options you can change like Deployment Target, Devices, and **Main Interface**. In the dropdown menu next to **Main Interface**, select the Storyboard file you just created.
