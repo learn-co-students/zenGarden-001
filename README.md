@@ -2,9 +2,14 @@
 
 # zenGarden
 
+
+## Goals
+
 Let's make a zen garden app! 
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/YmUNNvzSRrU?rel=0&modestbranding=1" frameborder="0" allowfullscreen></iframe><p><a href="https://www.youtube.com/watch?v=YmUNNvzSRrU">ZenGarden Demo</a></p>
+
+The goal of this lab is to help you become familiar with `UIGestureRecognizers`. You'll implement different gestures in order to move views around on the screen.
 
 ## Instructions
 
@@ -16,11 +21,11 @@ Let's make a zen garden app!
     * King Arthur's sword (swordinrock.png), should be in the top left or bottom left.
     * The Shrub (shrub.png) and the rake (rake.png) should be near each other (choose what your definition of *near* is)
     * The regular stone (rock1.png) needs to be on a different North/South half of the screen as King Arthur's Sword (swordinrock.png). So if the sword is on the top, the other stone should be on the bottom.
-  5. When all of these conditions are met, put up a `UIAlertView` saying you win, when the user selects "OK" randomly scramble the views.
+  5. When all of these conditions are met, present a `UIAlertViewController` informing the user that they won. Add a `UIAlertAction` that dismisses the alert. When the alert is dismissed, scramble the locations of the `UIImageViews` (i.e. give all of them a random location in the garden).
 
 ## Advanced
 
-  1. Add in a different way to move the items. Double tap on one to "select" it and give it a background color. Then tap somewhere else to move that item to the new location.
+  1. Add in a different way to move the items. Double tap on one to "select" it and give it a background color. Then tap somewhere else to move that item to the new location. *Hint:* You can do this with a `UITapGestureRecognizer`.
   
 ## Hints
 
